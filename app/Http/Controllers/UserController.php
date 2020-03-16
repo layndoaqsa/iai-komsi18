@@ -9,8 +9,8 @@ class UserController extends Controller
 {
     public function store(Request $request){
       $result = User::create([
-        'name' => $request->name,
-        'email' => $request->email,
+        'nama' => $request->nama,
+        'niu' => $request->niu,
         'password'=> app('hash')->make($request->password)
       ]);
 

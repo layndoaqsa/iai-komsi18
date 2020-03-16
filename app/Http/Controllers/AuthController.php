@@ -50,29 +50,32 @@ class AuthController extends BaseController
      */
     public function authenticate(User $user) {
         $this->validate($this->request, [
-            'email'     => 'required|email',
+            'niu'     => 'required',
             'password'  => 'required'
         ]);
         // Find the user by email
-        $user = User::where('email', $this->request->input('email'))->first();
+        $user = User::where('niu', $this->request->input('niu'))->first();
         if (!$user) {
             // You wil probably have some sort of helpers or whatever
             // to make sure that you have the same response format for
             // differents kind of responses. But let's return the
             // below respose for now.
             return response()->json([
-                'error' => 'Email does not exist.'
+                'error' => 'Niu does not exist.'
             ], 400);
         }
         // Verify the password and generate the token
         if (Hash::check($this->request->input('password'), $user->password)) {
             return response()->json([
-                'token' => $this->jwt($user)
+                'message' => 'Halo, '.$user->nama.'!',
+                'task' => 'Akses endpoint ini untuk melihat taskmu ya, jangan lupa gunakan token yang sudah digenerate',
+                'token' => $this->jwt($user),
+                
             ], 200);
         }
         // Bad Request response
         return response()->json([
-            'error' => 'Email or password is wrong.'
+            'error' => 'Niu or password is wrong.'
         ], 400);
     }
 }

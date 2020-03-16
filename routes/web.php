@@ -15,7 +15,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->post('auth/login',
+$router->post('login',
   [
     'uses' => 'AuthController@authenticate'
   ]
@@ -37,5 +37,8 @@ $router->group(
       $router->put('content/{id}', 'ContentController@update');
       // UNTUK MENGHAPUS DATA TERTENTU
       $router->delete('content/{id}', 'ContentController@destroy');
+
+      //task
+      $router->get('task/{niu}', 'TaskController@task');
     }
 );
