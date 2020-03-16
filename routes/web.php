@@ -39,6 +39,6 @@ $router->group(
       $router->delete('content/{id}', 'ContentController@destroy');
 
       //task
-      $router->get('task/{niu}', 'TaskController@task');
+      $router->get('task/{niu}',['as' => 'task', 'uses' => 'TaskController@task']);
     }
 );
