@@ -123,5 +123,10 @@ class DatabaseSeeder extends Seeder
             'niu' => '431738',
             'password' => Hash::make('431738')
             ]);
+            DB::table('users')->insert([
+            'nama' => 'Edo Novanto',
+            'niu' => '432181',
+            'password' => Hash::make('432181')
+            ]);
     }
 }

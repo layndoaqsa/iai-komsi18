@@ -49,7 +49,7 @@ class TaskController extends Controller
           $no1 = 'sma,email';
           $no2 = 'bilangan segitiga';
           break;
-        case ($niu == 425963|| $niu == 425977):
+        case ($niu == 425963|| $niu == 425977 || $niu == 432181):
           $no1 = 'no_hp, asal';
           $no2 = 'bilangan segitiga pascal';
           break;
@@ -111,7 +111,7 @@ class TaskController extends Controller
         case ($niu == 425979|| $niu == 431742):
           $no1 = 'sma,email';
           break;
-        case ($niu == 425963|| $niu == 425977):
+        case ($niu == 425963|| $niu == 425977 || $niu == 432181):
           $no1 = 'no_hp, asal';
           break;
         case ($niu == 425969|| $niu == 431734):
