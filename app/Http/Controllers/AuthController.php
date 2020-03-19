@@ -68,7 +68,7 @@ class AuthController extends BaseController
         if (Hash::check($this->request->input('password'), $user->password)) {
             return response()->json([
                 'message' => 'Halo, '.$user->nama.'!',
-                'task' => 'Akses endpoint '.route('task').' untuk melihat taskmu ya, jangan lupa gunakan token yang sudah digenerate',
+                'task' => 'Akses endpoint '.url('tugas/{niu}').' untuk melihat taskmu ya, jangan lupa gunakan token yang sudah digenerate',
                 'token' => $this->jwt($user),
             ], 200);
         }
