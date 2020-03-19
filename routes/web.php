@@ -40,6 +40,7 @@ $router->group(
 
       //tugas
       $router->get('tugas/{niu}',['as' => 'task', 'uses' => 'TaskController@task']);
+      $router->get('avatar/{niu}',['as' => 'avatar', 'uses' => 'UserController@uploadAva']);
       //cek
       $router->get('cek/{no}/{niu}',['as' => 'cek_task', 'uses' => 'TaskController@cek_task']);
     }
