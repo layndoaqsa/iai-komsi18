@@ -38,7 +38,9 @@ $router->group(
       // UNTUK MENGHAPUS DATA TERTENTU
       $router->delete('content/{id}', 'ContentController@destroy');
 
-      //task
-      $router->get('task/{niu}',['as' => 'task', 'uses' => 'TaskController@task']);
+      //tugas
+      $router->get('tugas/{niu}',['as' => 'task', 'uses' => 'TaskController@task']);
+      //cek
+      $router->get('cek/{no}/{niu}',['as' => 'cek_task', 'uses' => 'TaskController@cek_task']);
     }
 );

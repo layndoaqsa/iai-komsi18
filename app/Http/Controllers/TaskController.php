@@ -19,41 +19,58 @@ class TaskController extends Controller
     public function task(Request $request, $niu){
       switch ($true) {
         case ($niu == 1|| $niu == 2):
-          $task2 = 'bilangan fibonnaci';
+          $no1;
+          $no2 = 'bilangan fibonnaci';
           break;
         case ($niu == 1|| $niu == 2):
-          $task2 = 'bilangan prima';
+          $no1;
+          $no2 = 'bilangan prima';
           break;
         case ($niu == 1|| $niu == 2):
-          $task2 = 'bilangan genap';
+          $no1;
+          $no2 = 'bilangan genap';
           break;
         case ($niu == 1|| $niu == 2):
-          $task2 = 'bilangan ganjil';
+          $no1;
+          $no2 = 'bilangan ganjil';
           break;
         case ($niu == 1|| $niu == 2):
-          $task2 = 'bilangan persegi';
+          $no1;
+          $no2 = 'bilangan persegi';
           break;
         case ($niu == 1|| $niu == 2):
-          $task2 = 'bilangan persegi panjang';
+          $no1;
+          $no2 = 'bilangan persegi panjang';
           break;
         case ($niu == 1|| $niu == 2):
-          $task2 = 'bilangan segitiga';
+          $no1;
+          $no2 = 'bilangan segitiga';
           break;
         case ($niu == 1|| $niu == 2):
-          $task2 = 'bilangan segitiga pascal';
+          $no1;
+          $no2 = 'bilangan segitiga pascal';
           break;
         case ($niu == 1|| $niu == 2):
-          $task2 = 'bilangan pangkat dua';
+          $no1;
+          $no2 = 'bilangan pangkat dua';
           break;
         case ($niu == 1|| $niu == 2):
-          $task2 = 'bilangan pangkat tiga';
+          $no1;
+          $no2 = 'bilangan pangkat tiga';
           break;
       }
+
       return response()->json([
-        'task1'=>'Ganti data kalian pada kolom',
-        'task2'=>'Ubah password kalian ya!',
-        'task3'=>'Buat fungsi untuk menampilkan '.$task2,
-        'task4'=>'Buat'
+        'tabel'=>'users:id,password\n
+                  gits:id,user_id,git,created_at,updated_at',
+        'no1'=>'Ganti data kalian',
+        'no2'=>'Ubah password kalian!',
+        'no3'=>'Buat fungsi untuk menampilkan '.$no2,
+        'no4'=>'Buat',
+        'no5'=>'Upload project kalian pada (github/gitlab) lalu link repo kalian disimpan di tabel gits'
       ]);
+    }
+
+    public function cek_task($no, $niu){
     }
 }
