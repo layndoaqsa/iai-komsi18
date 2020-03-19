@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 use DB;
 
 class TaskController extends Controller
@@ -62,15 +64,28 @@ class TaskController extends Controller
       }
 
       return response()->json([
-        'data'=> DB::select('select '.$kolom. ' from users'),
-        'tabel'=>'users:id,password,'.$kolom.'\n
-                  gits:id,user_id,git,created_at,updated_at',
-        'no1'=>'Ganti data '.$kolom.' kalian',
-        'no2'=>'Ubah password kalian!',
-        'no3'=>'Buat fungsi untuk menampilkan '.$no2,
-        'no5'=>'Upload project kalian pada (github/gitlab) lalu link repo kalian disimpan di tabel gits',
-        'lihat jawabanmu'=> 'Akses endpoint '.url('cek/{no1(atau)no2(atau)no5}/{niu}').' untuk melihat jawabanmu, jangan lupa gunakan token yang sudah digenerate',
-      ]);
+        // 'data'=> DB::select('select '.$no1. ' from users'),
+        
+        'tugas' => [
+          'no1'=>'Ganti data '.$no1.' kamu',
+          'no2'=>'Ubah password kamu!',
+          'no3'=>'Buat fungsi untuk menampilkan '.$no2,
+          'no4'=>'Buatlah agar kolom avatar kamu terdapat sebuah foto yang file tsb di encode menjadi base64 terlebih dahulu',
+          'no5'=>'Upload project kamu pada (github/gitlab) lalu link.kan repo kamu dengan menyimpannya di tabel gits',
+        ],
+        'cara mengerjakan' => [
+          '1' => 'ubah .env kalian sesuai dengan .......',
+          '2' => 'kerjakan soal no1, no2 dan no4 seperti biasa',
+          '3' => 'kerjakan soal no3 didalam TaskController(jika belum ada, silahkan dibuat dulu controllernya)',
+          '4' => 'kumpulkan melalui link github/gitlab. Ini berarti kamu harus membuat method post ke dalam table gits',
+        ],
+        'petunjuk table'=>[
+          'tabel users'=>'id,password,avatar,'.$no1.'',
+          'tabel gits'=>'id,user_id,git,created_at,updated_at',
+        ],
+        'lihat jawabanmu'=> 'Akses endpoint '.url('cek/{no1(atau)no2(atau)no4(atau)no5}/{niu}').' untuk melihat jawabanmu, jangan lupa gunakan token yang sudah digenerate',
+        'keterangan' => 'Tugas ini adalah tugas untuk 2 pertemuan'
+        ]);
     }
 
     public function cek_task($no, $niu){
@@ -112,17 +127,25 @@ class TaskController extends Controller
           break;
         case 'no2':
           $user = User::where('niu',$niu)->first();
-          if(Hash::check($user->password,$niu)){
-            $data = 'Wah password kamu belum berhasil di ganti nih.';
+          if(Hash::check($niu,$user->password)){//sudah
+            //eh kan iki jare nggo 2 minggu? nek ngono tambahi input avatar dong yaaa
+            // cah cahe kon garap seko awal? iyo
+            //dadi mereka gawe dewe, terus fotone mereka iku ngko di post ng table users kolom avatar
+            // oke boleh lah kalu begitu
+            //dinei keterangan fotone di encode simek, dadi base 64
+            $data = 'Wah password kamu belum berhasil di ganti nih. Semangat ya Kamu, nggak boleh nyerah!';
           } else {
             $data = 'Yeaay selamat, password kamu sudah berhasil dirubah. Tapi hati kamu nggak berubah kan? Tetep buat aku?';
           }
           break;
+        case 'no4':
+          $data = DB::select('select avatar from users where niu='.$niu);
+          break;
         case 'no5':
           $id = User::where('niu',$niu)->first()->id;
-          $data = DB::select('select * from gits where user_id=$id');
+          $data = DB::select('select * from gits where user_id='.$id);
           break;
       }
-      return $data;
+      return response()->json($data);
     }
 }
