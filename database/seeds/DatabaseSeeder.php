@@ -113,6 +113,16 @@ class DatabaseSeeder extends Seeder
             'niu' => '432187',
             'password' => Hash::make('432187')
             ],
+            [
+            'nama' => 'Syafiq Nur Kholis',
+            'niu' => '431744',
+            'password' => Hash::make('431744')
+            ],
+            [
+            'nama' => 'Qrisha Akbar Priliana',
+            'niu' => '431738',
+            'password' => Hash::make('431738')
+            ],
         );
     }
 }

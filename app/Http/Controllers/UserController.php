@@ -29,7 +29,7 @@ class UserController extends Controller
     }
 
   public function uploadAva(Request $request, $niu){
-      $data = User::where('niu',$niu)->first()
+      $data = User::where('niu',$niu)->first();
       $response = null;
       $user = (object) ['image' => ""];
 
