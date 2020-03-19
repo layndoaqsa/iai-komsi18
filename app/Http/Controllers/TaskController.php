@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class TaskController extends Controller
 {
@@ -61,7 +62,8 @@ class TaskController extends Controller
       }
 
       return response()->json([
-        'tabel'=>'users:id,password\n
+        'data'=> DB::select($kolom. 'from users'),
+        'tabel'=>'users:id,password,'.$kolom.'\n
                   gits:id,user_id,git,created_at,updated_at',
         'no1'=>'Ganti data kalian',
         'no2'=>'Ubah password kalian!',
