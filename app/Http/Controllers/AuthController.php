@@ -6,6 +6,7 @@ use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Firebase\JWT\ExpiredException;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\KeyController;
 use Laravel\Lumen\Routing\Controller as BaseController;
 class AuthController extends BaseController
 {
@@ -66,9 +67,10 @@ class AuthController extends BaseController
         }
         // Verify the password and generate the token
         if (Hash::check($this->request->input('password'), $user->password)) {
+            $key = (new KeyController)->my_simple_crypt($this->request->input('password'));
             return response()->json([
                 'message' => 'Halo, '.$user->nama.'!',
-                'task' => 'Akses endpoint '.url('tugas/{niu}').' untuk melihat taskmu ya, jangan lupa gunakan token yang sudah digenerate',
+                'task' => 'Akses endpoint '.url('api/tugas/'.$key).' dengan method GET untuk melihat taskmu ya, jangan lupa gunakan token yang sudah digenerate',
                 'token' => $this->jwt($user),
             ], 200);
         }

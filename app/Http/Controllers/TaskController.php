@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use DB;
+use App\Http\Controllers\KeyController;
 
 class TaskController extends Controller
 {
@@ -20,6 +21,9 @@ class TaskController extends Controller
     }
 
     public function task(Request $request, $niu){
+      $key = $niu;
+      $niu = (new KeyController)->my_simple_crypt($niu,'d');
+
       switch (true) {
         case ($niu == 431738|| $niu == 431744):
           $no1 = 'sd,email';
@@ -81,15 +85,16 @@ class TaskController extends Controller
           '5' => 'kumpulkan melalui link github/gitlab. Ini berarti kamu harus membuat method post ke dalam table gits',
         ],
         'petunjuk table'=>[
-          'tabel users'=>'id,password,avatar,'.$no1.'',
+          'tabel users'=>'id,password,avatar,'.$no1.',avatar,created_at,updated_at',
           'tabel gits'=>'id,user_id,git,created_at,updated_at',
         ],
-        'lihat jawabanmu'=> 'Akses endpoint '.url('cek/{no1(atau)no2(atau)no4(atau)no5}/{niu}').' untuk melihat jawabanmu, jangan lupa gunakan token yang sudah digenerate',
+        'lihat jawabanmu'=> 'Akses endpoint '.url('api/cek/{no1(atau)no2(atau)no4(atau)no5}/'.$key).' dengan method GET untuk melihat jawabanmu, jangan lupa gunakan token yang sudah digenerate',
         'keterangan' => 'Tugas ini adalah tugas untuk 2 pertemuan'
         ]);
     }
 
     public function cek_task($no, $niu){
+      $niu = (new KeyController)->my_simple_crypt($niu,'d');
       switch (true) {
         case ($niu == 431738|| $niu == 431744):
           $no1 = 'sd,email';

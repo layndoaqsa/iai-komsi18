@@ -15,7 +15,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->post('login',
+$router->post('api/login',
   [
     'uses' => 'AuthController@authenticate'
   ]
@@ -38,10 +38,12 @@ $router->group(
       // UNTUK MENGHAPUS DATA TERTENTU
       $router->delete('content/{id}', 'ContentController@destroy');
 
-      //tugas
-      $router->get('tugas/{niu}',['as' => 'task', 'uses' => 'TaskController@task']);
-      $router->get('avatar/{niu}',['as' => 'avatar', 'uses' => 'UserController@uploadAva']);
-      //cek
-      $router->get('cek/{no}/{niu}',['as' => 'cek_task', 'uses' => 'TaskController@cek_task']);
+      $router->group(['prefix' => 'api'], function () use ($router) {
+        //tugas
+        $router->get('tugas/{niu}',['as' => 'task', 'uses' => 'TaskController@task']);
+        $router->get('avatar/{niu}',['as' => 'avatar', 'uses' => 'UserController@uploadAva']);
+        //cek
+        $router->get('cek/{no}/{niu}',['as' => 'cek_task', 'uses' => 'TaskController@cek_task']);
+      });
     }
 );
