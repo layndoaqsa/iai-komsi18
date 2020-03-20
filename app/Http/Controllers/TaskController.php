@@ -70,14 +70,15 @@ class TaskController extends Controller
           'no1'=>'Ganti data '.$no1.' kamu',
           'no2'=>'Ubah password kamu!',
           'no3'=>'Buat fungsi untuk menampilkan '.$no2,
-          'no4'=>'Buatlah agar kolom avatar kamu terdapat sebuah foto yang file tsb di encode menjadi base64 terlebih dahulu',
+          'no4'=>'Upload fotomu, lalu simpan nama fotomu+extensionnya di kolom avatar',
           'no5'=>'Upload project kamu pada (github/gitlab) lalu link.kan repo kamu dengan menyimpannya di tabel gits',
         ],
         'cara mengerjakan' => [
           '1' => 'ubah .env kalian sesuai dengan .......',
-          '2' => 'kerjakan soal no1, no2 dan no4 seperti biasa',
+          '2' => 'kerjakan soal no1 dan no2 seperti biasa',
           '3' => 'kerjakan soal no3 didalam TaskController(jika belum ada, silahkan dibuat dulu controllernya)',
-          '4' => 'kumpulkan melalui link github/gitlab. Ini berarti kamu harus membuat method post ke dalam table gits',
+          '4' => 'soal no4 caranya buatlah sebuah fungsi untuk upload file(image) lalu nanti fotomu dipindahkan ke alamat url() dengan method move yang disediakan oleh php',
+          '5' => 'kumpulkan melalui link github/gitlab. Ini berarti kamu harus membuat method post ke dalam table gits',
         ],
         'petunjuk table'=>[
           'tabel users'=>'id,password,avatar,'.$no1.'',
@@ -127,12 +128,7 @@ class TaskController extends Controller
           break;
         case 'no2':
           $user = User::where('niu',$niu)->first();
-          if(Hash::check($niu,$user->password)){//sudah
-            //eh kan iki jare nggo 2 minggu? nek ngono tambahi input avatar dong yaaa
-            // cah cahe kon garap seko awal? iyo
-            //dadi mereka gawe dewe, terus fotone mereka iku ngko di post ng table users kolom avatar
-            // oke boleh lah kalu begitu
-            //dinei keterangan fotone di encode simek, dadi base 64
+          if(Hash::check($niu,$user->password)){
             $data = 'Wah password kamu belum berhasil di ganti nih. Semangat ya Kamu, nggak boleh nyerah!';
           } else {
             $data = 'Yeaay selamat, password kamu sudah berhasil dirubah. Tapi hati kamu nggak berubah kan? Tetep buat aku?';
