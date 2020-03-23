@@ -92,7 +92,7 @@ class TaskController extends Controller
             'keterangan' => 'Tugas ini adalah tugas untuk pertemuan 26 Maret 2020, maksimal diselesaikan pada 2 April 2020 pukul 08.00.',
         ],
 
-        'Untuk pertemuan selanjutnya (2 April 2020), yaitu presentasi kelompok mengenai Tugas Akhir IAI. Beberapa point yang harus ada dalam presentasi:' => [
+        'Untuk pertemuan selanjutnya (2 April 2020), yaitu presentasi kelompok mengenai Tugas Akhir IAI. Point-point yang harus ada dalam presentasi:' => [
           '1.' => 'List API yang digunakan.',
           '2.' => 'Proses keterkaitan satu API dengan API yg lain',
           '3.' => 'Gambaran sistem yg akan dibuat',
@@ -147,9 +147,6 @@ class TaskController extends Controller
           } else {
             $data = 'Yeaay selamat, password kamu sudah berhasil dirubah. Tapi hati kamu nggak berubah kan? Tetep buat aku?';
           }
-          break;
-        case 'no4':
-          $data = DB::select('select avatar from users where niu='.$niu);
           break;
         case 'no5':
           $id = User::where('niu',$niu)->first()->id;
