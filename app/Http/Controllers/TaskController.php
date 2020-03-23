@@ -24,7 +24,7 @@ class TaskController extends Controller
       $key = $niu;
       $niu = (new KeyController)->my_simple_crypt($niu,'d');
 
-      switch (true) {
+      switch ($niu) {
         case ($niu == 431738|| $niu == 431744):
           $no1 = 'sd,email';
           $no2 = 'bilangan fibonnaci';
@@ -69,7 +69,7 @@ class TaskController extends Controller
 
       return response()->json([
         // 'data'=> DB::select('select '.$no1. ' from users'),
-        
+
         'tugas' => [
           'no1'=>'Ganti data '.$no1.' kamu',
           'no2'=>'Ubah password kamu!',
@@ -89,7 +89,13 @@ class TaskController extends Controller
           'tabel gits'=>'id,user_id,git,created_at,updated_at',
         ],
         'lihat jawabanmu'=> 'Akses endpoint '.url('api/cek/{no1(atau)no2(atau)no4(atau)no5}/'.$key).' dengan method GET untuk melihat jawabanmu, jangan lupa gunakan token yang sudah digenerate',
-        'keterangan' => 'Tugas ini adalah tugas untuk 2 pertemuan'
+        'keterangan' => 'Tugas ini adalah tugas untuk 1 pertemuan. Untuk tugas selanjutnya, yaitu presentasi kelompok mengenai Tugas Akhir IAI.',
+        'Point-point presentasi pada tugas pertemuan selanjutnya' => [
+          '1.' => 'List API yang digunakan.',
+          '2.' => 'Proses keterkaitan satu API dengan API yg lain',
+          '3.' => 'Gambaran sistem yg akan dibuat',
+          '4.' => 'Apakah menggunakan API tsb ada cara2 khusus seperti harus mendaftar, dan sebgainya. Bisa dijelaskan'
+          ]
         ]);
     }
 
