@@ -69,33 +69,36 @@ class TaskController extends Controller
 
       return response()->json([
         // 'data'=> DB::select('select '.$no1. ' from users'),
+        'Tugas untuk pertemuan pengganti tanggal 26 April 2020' => [
+            'soal ' => [
+              'no1'=>'Ganti data '.$no1.' kamu',
+              'no2'=>'Ubah password kamu!',
+              'no3'=>'Buat fungsi untuk menampilkan '.$no2,
+              'no4'=>'Upload fotomu, lalu simpan nama fotomu+extensionnya di kolom avatar',
+              'no5'=>'Upload project kamu pada (github/gitlab) lalu link.kan repo kamu dengan menyimpannya di tabel gits',
+            ],
+            'cara mengerjakan' => [
+              '1' => 'ubah .env kalian sesuai dengan .......',
+              '2' => 'kerjakan soal no1 dan no2 seperti biasa',
+              '3' => 'kerjakan soal no3 didalam TaskController(jika belum ada, silahkan dibuat dulu controllernya)',
+              '4' => 'soal no4 caranya buatlah sebuah fungsi untuk upload file(image) lalu nanti fotomu dipindahkan ke alamat url() dengan method move yang disediakan oleh php',
+              '5' => 'kumpulkan melalui link github/gitlab. Ini berarti kamu harus membuat method post ke dalam table gits',
+            ],
+            'petunjuk table'=>[
+              'tabel users'=>'id,password,avatar,'.$no1.',avatar,created_at,updated_at',
+              'tabel gits'=>'id,user_id,git,created_at,updated_at',
+            ],
+            'lihat jawabanmu'=> 'Akses endpoint '.url('api/cek/{no1(atau)no2(atau)no4(atau)no5}/'.$key).' dengan method GET untuk melihat jawabanmu, jangan lupa gunakan token yang sudah digenerate',
+            'keterangan' => 'Tugas ini adalah tugas untuk pertemuan 26 Maret 2020, maksimal diselesaikan pada 2 April 2020 pukul 08.00.',
+        ],
 
-        'tugas' => [
-          'no1'=>'Ganti data '.$no1.' kamu',
-          'no2'=>'Ubah password kamu!',
-          'no3'=>'Buat fungsi untuk menampilkan '.$no2,
-          'no4'=>'Upload fotomu, lalu simpan nama fotomu+extensionnya di kolom avatar',
-          'no5'=>'Upload project kamu pada (github/gitlab) lalu link.kan repo kamu dengan menyimpannya di tabel gits',
-        ],
-        'cara mengerjakan' => [
-          '1' => 'ubah .env kalian sesuai dengan .......',
-          '2' => 'kerjakan soal no1 dan no2 seperti biasa',
-          '3' => 'kerjakan soal no3 didalam TaskController(jika belum ada, silahkan dibuat dulu controllernya)',
-          '4' => 'soal no4 caranya buatlah sebuah fungsi untuk upload file(image) lalu nanti fotomu dipindahkan ke alamat url() dengan method move yang disediakan oleh php',
-          '5' => 'kumpulkan melalui link github/gitlab. Ini berarti kamu harus membuat method post ke dalam table gits',
-        ],
-        'petunjuk table'=>[
-          'tabel users'=>'id,password,avatar,'.$no1.',avatar,created_at,updated_at',
-          'tabel gits'=>'id,user_id,git,created_at,updated_at',
-        ],
-        'lihat jawabanmu'=> 'Akses endpoint '.url('api/cek/{no1(atau)no2(atau)no4(atau)no5}/'.$key).' dengan method GET untuk melihat jawabanmu, jangan lupa gunakan token yang sudah digenerate',
-        'keterangan' => 'Tugas ini adalah tugas untuk 1 pertemuan. Untuk tugas selanjutnya, yaitu presentasi kelompok mengenai Tugas Akhir IAI.',
-        'Point-point presentasi pada tugas pertemuan selanjutnya' => [
+        'Untuk pertemuan selanjutnya (2 April 2020), yaitu presentasi kelompok mengenai Tugas Akhir IAI. Beberapa point yang harus ada dalam presentasi:' => [
           '1.' => 'List API yang digunakan.',
           '2.' => 'Proses keterkaitan satu API dengan API yg lain',
           '3.' => 'Gambaran sistem yg akan dibuat',
-          '4.' => 'Apakah menggunakan API tsb ada cara2 khusus seperti harus mendaftar, dan sebgainya. Bisa dijelaskan'
-          ]
+          '4.' => 'Apakah menggunakan API tsb ada cara2 khusus seperti harus mendaftar, dan sebgainya. Bisa dijelaskan',
+          'Keterangan' => 'Metode presentasi akan diberitahukan lebih lanjut',
+        ],
         ]);
     }
 
