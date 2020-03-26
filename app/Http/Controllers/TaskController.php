@@ -71,6 +71,7 @@ class TaskController extends Controller
         // 'data'=> DB::select('select '.$no1. ' from users'),
         'Tugas untuk pertemuan pengganti tanggal 26 Maret 2020' => [
             'keterangan tugas' => 'Buatlah sebuah projet lumen untuk mengerjakan soal-soal yang disebutkan dibawah',
+            'keterangan tambahan' => ' Tidak perlu membuat database, cukup mengakses database yang sudah disediakan di server',
             'soal ' => [
               'no1'=>'Ganti data '.$no1.' kamu',
               'no2'=>'Ubah password kamu!',
