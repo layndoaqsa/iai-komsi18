@@ -70,7 +70,7 @@ class TaskController extends Controller
       return response()->json([
         // 'data'=> DB::select('select '.$no1. ' from users'),
         'Tugas untuk pertemuan pengganti tanggal 26 Maret 2020' => [
-            'keterangan' => 'Buatlah sebuah projet lumen untuk mengerjakan soal-soal yang disebutkan dibawah',
+            'keterangan tugas' => 'Buatlah sebuah projet lumen untuk mengerjakan soal-soal yang disebutkan dibawah',
             'soal ' => [
               'no1'=>'Ganti data '.$no1.' kamu',
               'no2'=>'Ubah password kamu!',
