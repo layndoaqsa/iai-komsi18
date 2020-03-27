@@ -67,7 +67,7 @@ class AuthController extends BaseController
         }
         // Verify the password and generate the token
         if (Hash::check($this->request->input('password'), $user->password)) {
-            $key = (new KeyController)->my_simple_crypt($this->request->input('password'));
+            $key = (new KeyController)->my_simple_crypt($this->request->input('niu'));
             return response()->json([
                 'message' => 'Halo, '.$user->nama.'!',
                 'task' => 'Akses endpoint '.url('api/tugas/'.$key).' dengan method GET untuk melihat taskmu ya, jangan lupa gunakan token yang sudah digenerate',
