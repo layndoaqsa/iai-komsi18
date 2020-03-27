@@ -115,7 +115,7 @@ class TaskController extends Controller
           $no1 = 'sma,hobi';
           break;
         case ($niu == 432187|| $niu == 425973):
-          $no1 = 'hobi,asal';
+          $no1 = 'hobi, asal';
           break;
         case ($niu == 432185|| $niu == 425975):
           $no1 = 'asal,tanggal_lahir';
@@ -138,7 +138,7 @@ class TaskController extends Controller
       }
       switch ($no) {
         case 'no1':
-          $data = DB::select('select '.$no1.' from users where niu='.$niu);
+          $data = DB::select("select $no1 from users where niu='$niu'");
           break;
         case 'no2':
           $user = User::where('niu',$niu)->first();
